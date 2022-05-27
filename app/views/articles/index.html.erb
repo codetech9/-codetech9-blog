@@ -1,0 +1,9 @@
+<h1 class="text-center"> Mes Articles</h1>
+
+<%=  @articles.each do |article| %>
+  <div class="card mx-auto" style="width: 18rem; margin: 8px;">
+    <h5 class="card-title"><%= article.title.capitatlize %></h5>
+    <p><%= article.body %></p>
+  </div>
+  <p><%= link_to "Voir Plus", article_path(article), class="btn btn-dark" %></p>
+<% end %>
