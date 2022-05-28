@@ -13,8 +13,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new
+    @article = Article.new(article_params)
     @article.save!
+    redirect_to article_path(@article)
   end
 
   def edit
@@ -22,11 +23,12 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.update(article_params)
-    redirect_to articles_path(@article)
+    redirect_to article_path(@article)
   end
 
   def destroy
-    @article = Article.destroy
+    @article.destroy
+    redirect_to articles_path
   end
 
   private
@@ -36,6 +38,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :photo)
   end
 end

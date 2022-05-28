@@ -1,9 +1,14 @@
 <h1 class="text-center"> Mes Articles</h1>
 
-<%=  @articles.each do |article| %>
-  <div class="card mx-auto" style="width: 18rem; margin: 8px;">
-    <h5 class="card-title"><%= article.title.capitatlize %></h5>
-    <p><%= article.body %></p>
-  </div>
-  <p><%= link_to "Voir Plus", article_path(article), class="btn btn-dark" %></p>
-<% end %>
+<%= link_to "Nouveau", new_article_path, class: "btn btn-primary" %>
+<div class="container d-flex justify-content-between">
+  <% @articles.each do |article| %>
+    <div class="card text-center" style="width: 18rem; margin: 8px;">
+      <h5 class="card-title"><%= article.title.capitalize %></h5>
+      <p><%= link_to "Lire", article_path(article), class:"btn btn-dark" %></p>
+    </div>
+    <%= link_to  article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-red" do %>
+      "Supprimer"
+    <% end %>
+  <% end %>
+</div>

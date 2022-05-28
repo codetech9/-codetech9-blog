@@ -1,3 +1,7 @@
-<h1><%= @article.title.capitalize %></h1>
-<p><%= @article.body %></p>
-<%= link_to "Liste des Articles", articles_path, class: "btn btn-primary" %>
+
+<div class="col-8 mx-auto my-4 card text-justify p-auto">
+<h1 class="text-center"><%= @article.title.capitalize %></h1>
+  <%= cl_image_tag @article.photo.key.to_s, alt: "SF", width: 600, height: 600, crop: :fill, class:"mx-auto" %>
+  <p class="text-center"><%= @article.body %></p>
+<%= link_to "<- Tous les articles", articles_path, class: "btn btn-dark" %>
+</div>
